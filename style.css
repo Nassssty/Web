@@ -1,0 +1,136 @@
+:root {
+    --main-bg-color: #FFF1FA;
+    --main-text-color: #3A3A3A;
+    --menu-bg-color: #2C3248;
+    --menu-text-color: #FFFFFF;
+    --highlight-bg-color: #D6C9B9;
+    --highlight-text-color: #3A3A3A;
+    --font-size-large: 130%;
+    --font-size-medium: 120%;
+    --font-size-small: 90%;
+    --padding-default: 2.5%;
+    --margin-default: 10%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-bg-color);
+}
+
+.main_menu {
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
+    padding: var(--padding-default);
+    font-size: var(--font-size-large);
+}
+
+.main_menu ul {
+    display: flex; /*делаем контейнер, чтобы потом выровнять в ряд*/
+    justify-content: center;
+    list-style: none;
+}
+
+.main_menu li {
+    margin: 0 var(--margin-default);
+}
+
+.main-title {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--main-text-color);
+}
+
+.main-title img {
+    width: 30%;
+    margin-right: 25%;
+    padding: var(--padding-default);
+}
+
+.main-title h1 {
+    font-size: 200%;
+}
+
+.main-title h2 {
+    font-weight: 100;
+}
+
+.menu {
+    background-color: var(--highlight-bg-color);
+    color: var(--highlight-text-color);
+}
+
+.menu ol {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: var(--padding-default);
+    font-size: var(--font-size-large);
+}
+
+.menu li {
+    margin: 0 5%;
+}
+
+.about_us {
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--padding-default);
+    font-size: var(--font-size-medium);
+    line-height: 130%;
+}
+
+.about_us > div {
+    flex: 1; /* текст двигается*/
+    margin: 0 5%;
+}
+
+.about_us > article {
+    flex: 0 0 30%; /* а тут не двигается*/
+}
+
+.about_us img {
+    display: block; /* блок, чтобы тень добавить*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about_us h4 {
+    text-decoration: underline;
+    font-size: 80%;
+    text-align: center;
+}
+
+.Advertisement {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column; /* вертикальная ось */
+    text-align: center;
+    padding: var(--padding-default);
+}
+
+footer {
+    background-color: var(--highlight-bg-color);
+    color: var(--highlight-text-color);
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 3%;
+    font-size: var(--font-size-small);
+}
+
+footer li {
+    margin: 0 var(--margin-default);
+}
