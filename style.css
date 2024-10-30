@@ -18,8 +18,18 @@
     box-sizing: border-box;
 }
 
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 body {
     background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main_menu {
@@ -30,13 +40,22 @@ body {
 }
 
 .main_menu ul {
-    display: flex; /*делаем контейнер, чтобы потом выровнять в ряд*/
+    display: flex;
     justify-content: center;
     list-style: none;
 }
 
 .main_menu li {
-    margin: 0 var(--margin-default);
+    margin: 0 5%;
+}
+
+.main_menu li.cart {
+    margin-left: auto;
+    margin-right: 1%;
+}
+
+.main_menu li.profile {
+    margin-left: 1%;
 }
 
 .main-title {
@@ -65,6 +84,7 @@ body {
 .menu {
     background-color: var(--highlight-bg-color);
     color: var(--highlight-text-color);
+    width: 100%;
 }
 
 .menu ol {
@@ -79,6 +99,13 @@ body {
     margin: 0 5%;
 }
 
+@media screen and (max-width: 600px) {
+    .menu ol {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .about_us {
     background-color: var(--menu-bg-color);
     color: var(--menu-text-color);
@@ -88,19 +115,29 @@ body {
     padding: var(--padding-default);
     font-size: var(--font-size-medium);
     line-height: 130%;
+    width: 100%;
 }
 
 .about_us > div {
-    flex: 1; /* текст двигается*/
+    flex: 1;
     margin: 0 5%;
 }
 
-.about_us > article {
-    flex: 0 0 30%; /* а тут не двигается*/
+
+
+.about_us article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about_us article img {
+    margin-top: 10px;
 }
 
 .about_us img {
-    display: block; /* блок, чтобы тень добавить*/
+    display: block;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -110,17 +147,95 @@ body {
     text-align: center;
 }
 
+@media screen and (max-width: 600px) {
+    .about_us article {
+        display: none;
+    }
+}
+
+.horizontal-images {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.horizontal-images img {
+    margin: 20px 10px 0 10px;
+    width: 30%;
+}
+
 .Advertisement {
     background-color: #FFFFFF;
     display: flex;
-    flex-direction: column; /* вертикальная ось */
+    flex-direction: column;
     text-align: center;
     padding: var(--padding-default);
+    width: 100%;
+}
+
+.center-text {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    width: 100%;
+}
+
+thead, tbody, tr {
+    display: contents;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #D6C9B9;
+}
+
+th {
+    background-color: #2C3248;
+    color: white;
+    font-weight: bold;
+}
+
+td:first-child, th:first-child {
+    background-color: #2C3248;
+    color: white;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: #f4f4f4;
+}
+
+tbody tr:nth-child(odd) td {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even) td:first-child {
+    background-color: #2C3248;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(odd) td:first-child {
+    background-color: #2C3248;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.grid-item {
+    padding: 10px;
 }
 
 footer {
     background-color: var(--highlight-bg-color);
-    color: var(--highlight-text-color);
+    color: var(--main-text-color);
+    width: 100%;
 }
 
 footer ul {
