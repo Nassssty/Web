@@ -8,15 +8,11 @@
     });
 })();
 
-document.querySelectorAll('.main_menu li').forEach(item => {
-    item.addEventListener('mouseenter', () => item.classList.add('hovered'));
-    item.addEventListener('mouseleave', () => item.classList.remove('hovered'));
-});
 
-const currentPage = window.location.pathname.split('/').pop();
+const currentURL = window.location.href;
 document.querySelectorAll('.main_menu a').forEach(link => {
-    const page = link.getAttribute('href');
-    if (currentPage === page) {
+    const pageURL = link.href;
+    if (currentURL === pageURL) {
         link.classList.add('active');
     }
 });
