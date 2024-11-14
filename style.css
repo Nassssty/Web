@@ -398,7 +398,7 @@ footer li {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 10px;
-    background-color: #FFFFFF; /* Зелёный цвет кнопки */
+    background-color: #FFFFFF;
     color: #3A3A3A;
     font-size: 16px;
     font-weight: bold;
@@ -410,13 +410,13 @@ footer li {
 
 .button:hover {
     color: white;
-    background-color: #45a049; /* Цвет кнопки при наведении */
-    transform: scale(1.05); /* Лёгкое увеличение при наведении */
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
 .button:active {
     color: white;
-    background-color: #3e8e41; /* Цвет кнопки при нажатии */
-    transform: scale(0.95); /* Уменьшение при нажатии */
+    background-color: #3e8e41;
+    transform: scale(0.95);
 }
 

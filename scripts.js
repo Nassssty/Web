@@ -72,11 +72,9 @@ function loadFormData() {
         return;
     }
 
-    // Восстанавливаем количество тортов
     document.getElementById('cakeCount').value = savedData.cakeCount;
-    generateForms();  // Создаём формы для каждого торта
+    generateForms();
 
-    // Заполняем формы данными из сохранённого заказа
     savedData.cakes.forEach((cake, index) => {
         document.querySelector(`select[name="filling${index + 1}"]`).value = cake.filling;
         document.querySelector(`select[name="color${index + 1}"]`).value = cake.color;
@@ -86,18 +84,15 @@ function loadFormData() {
     alert('Данные загружены!');
 }
 
-// Генерация таблицы для отображения заказа
 function generateTable() {
     const cakeCount = document.getElementById('cakeCount').value;
     const resultContainer = document.getElementById('resultContainer');
 
-    // Используем шаблон для заголовков таблицы
     const tableTemplate = document.getElementById('tableTemplate').content.cloneNode(true);
     const table = tableTemplate.querySelector('.grid-table');
 
     const rowTemplate = document.getElementById('rowTemplate');
 
-    // Добавляем строки с данными для каждого торта
     for (let i = 1; i <= cakeCount; i++) {
         const filling = document.querySelector(`select[name="filling${i}"]`).value;
         const color = document.querySelector(`select[name="color${i}"]`).value;
