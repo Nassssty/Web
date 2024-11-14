@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог тортов | Cake Shop by Anastasia</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+<header>
+  <nav class="main_menu" aria-label="Main_Navigation">
+    <ul>
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="catalog.html">Каталог</a></li>
+      <li><a href="cart.html">Корзина</a></li>
+      <li><a href="profile.html">Профиль</a></li>
+      <li><a href="constructor.html">Конструктор заказа</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="form-container">
+  <h2>Создание заказа на торт</h2>
+  <form id="initialForm">
+    <label for="cakeCount">Количество тортов:</label>
+    <select id="cakeCount" name="cakeCount" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select><br><br>
+    <button type="button" class="button" onclick="generateForms()">Далее</button>
+  </form>
+  <div id="individualFormsContainer"></div>
+</div>
+
+<template id="cakeFormTemplate">
+  <div class="individual-form">
+    <h3></h3>
+    <label>Начинка:</label>
+    <select class="filling-select" required>
+      <option value="Малина с розовым ликёром и фисташковым кремом">Малина с розовым ликёром и фисташковым кремом</option>
+      <option value="Соленая карамель с грушей и маскарпоне">Соленая карамель с грушей и маскарпоне</option>
+      <option value="Манго маракуя и кокосовый крем">Манго маракуя и кокосовый крем</option>
+      <option value="Лавандово-черничный крем с белым шоколадом">Лавандово-черничный крем с белым шоколадом</option>
+    </select><br><br>
+
+    <label>Цвет:</label>
+    <select class="color-select" required>
+      <option value="белый">Белый</option>
+      <option value="розовый">Розовый</option>
+      <option value="красный">Красный</option>
+      <option value="синий">Синий</option>
+      <option value="зеленый">Зеленый</option>
+    </select><br><br>
+
+    <label>Дизайн:</label>
+    <select class="design-select" required>
+      <option value="Картинка">Картинка</option>
+      <option value="Текст">Текст</option>
+      <option value="Фигурка">Фигурка</option>
+    </select><br><br>
+  </div>
+</template>
+
+<template id="tableTemplate">
+  <div class="grid-table">
+    <div class="grid-header">Торт №</div>
+    <div class="grid-header">Начинка</div>
+    <div class="grid-header">Цвет</div>
+    <div class="grid-header">Дизайн</div>
+  </div>
+</template>
+
+<template id="rowTemplate">
+  <div class="grid-cell cake-number"></div>
+  <div class="grid-cell cake-filling"></div>
+  <div class="grid-cell cake-color"></div>
+  <div class="grid-cell cake-design"></div>
+</template>
+
+<div class="result-container" id="resultContainer"></div>
+
+<footer>
+  <ul>
+    <li>© Cake Shop by Anastasia</li>
+    <li>Телефон: +79643410802</li>
+    <li>Адрес: Ул. Пушкина дом Колотушкина</li>
+  </ul>
+</footer>
+</body>
+</html>
