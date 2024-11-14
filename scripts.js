@@ -82,6 +82,8 @@ function generateTable() {
     const cakeCount = document.getElementById('cakeCount').value;
     const resultContainer = document.getElementById('resultContainer');
 
+    resultContainer.innerHTML = '';
+
     document.getElementById('orderHeader').style.display = 'block';
 
     const tableTemplate = document.getElementById('tableTemplate').content.cloneNode(true);
