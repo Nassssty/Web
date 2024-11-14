@@ -33,7 +33,15 @@
     </select><br><br>
     <button type="button" class="button" onclick="generateForms()">Далее</button>
   </form>
+
   <div id="individualFormsContainer"></div>
+
+  <div id="orderButtons" style="display: none;">
+    <button type="button" class="button" onclick="generateTable()">Создать заказ</button>
+    <button type="button" class="button" onclick="saveFormData()">Сохранить данные</button>
+    <button type="button" class="button" onclick="loadFormData()">Загрузить данные</button>
+  </div>
+
 </div>
 
 <template id="cakeFormTemplate">
@@ -81,7 +89,9 @@
   <div class="grid-cell cake-design"></div>
 </template>
 
-<div class="result-container" id="resultContainer"></div>
+<div class="result-container" id="resultContainer">
+  <h3 id="orderHeader" style="display: none;">Заказ:</h3>
+</div>
 
 <footer>
   <ul>

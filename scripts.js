@@ -26,7 +26,7 @@ document.getElementById('initialForm').addEventListener('submit', function(event
 function generateForms() {
     const cakeCount = document.getElementById('cakeCount').value;
     const formsContainer = document.getElementById('individualFormsContainer');
-    formsContainer.innerHTML = '';  // Очистка предыдущих форм
+    formsContainer.innerHTML = '';
 
     const template = document.getElementById('cakeFormTemplate');
 
@@ -41,12 +41,7 @@ function generateForms() {
         formsContainer.appendChild(formClone);
     }
 
-
-    formsContainer.innerHTML += `
-        <button type="button" class="button" onclick="generateTable()">Создать заказ</button>
-        <button type="button" class="button" onclick="saveFormData()">Сохранить данные</button>
-        <button type="button" class="button" onclick="loadFormData()">Загрузить данные</button>
-    `;
+    document.getElementById('orderButtons').style.display = 'block';
 }
 
 function saveFormData() {
@@ -64,7 +59,6 @@ function saveFormData() {
     alert('Данные сохранены!');
 }
 
-// Загрузка данных формы из localStorage
 function loadFormData() {
     const savedData = JSON.parse(localStorage.getItem('cakeOrder'));
     if (!savedData) {
@@ -88,6 +82,8 @@ function generateTable() {
     const cakeCount = document.getElementById('cakeCount').value;
     const resultContainer = document.getElementById('resultContainer');
 
+    document.getElementById('orderHeader').style.display = 'block';
+
     const tableTemplate = document.getElementById('tableTemplate').content.cloneNode(true);
     const table = tableTemplate.querySelector('.grid-table');
 
@@ -107,6 +103,5 @@ function generateTable() {
         table.appendChild(rowClone);
     }
 
-    resultContainer.innerHTML = '<h3>Заказ:</h3>';
     resultContainer.appendChild(table);
 }
