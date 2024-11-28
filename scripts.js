@@ -5,105 +5,57 @@
         const loadInfo = document.createElement('li');
         loadInfo.textContent = `Страница загружена за ${loadTime} секунд`;
         footer.appendChild(loadInfo);
+
+        // Генерация таблицы сразу при загрузке страницы, если есть данные
+        generateTable();
     });
 })();
 
+let cakeCount = 1;  // Номер текущего торта
 
-const currentURL = window.location.href;
-document.querySelectorAll('.main_menu a').forEach(link => {
-    const pageURL = link.href;
-    if (currentURL === pageURL) {
-        link.classList.add('active');
-    }
-});
+// Функция для добавления нового торта
+function addCake() {
+    const formContainer = document.getElementById('individualFormContainer');
+    const filling = formContainer.querySelector('.filling-select').value;
+    const color = formContainer.querySelector('.color-select').value;
+    const design = formContainer.querySelector('.design-select').value;
 
+    // Сохраняем данные о торте в localStorage
+    const cakeData = { filling, color, design };
+    let orderData = JSON.parse(localStorage.getItem('cakeOrder')) || [];
+    orderData.push(cakeData);
+    localStorage.setItem('cakeOrder', JSON.stringify(orderData));
 
-document.getElementById('initialForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    generateForms();
-});
+    // Генерация таблицы
+    generateTable();
 
-function generateForms() {
-    const cakeCount = document.getElementById('cakeCount').value;
-    const formsContainer = document.getElementById('individualFormsContainer');
-    formsContainer.innerHTML = '';
-
-    const template = document.getElementById('cakeFormTemplate');
-
-    for (let i = 1; i <= cakeCount; i++) {
-        const formClone = template.content.cloneNode(true);
-        formClone.querySelector('h3').textContent = `Торт №${i}`;
-
-        formClone.querySelector('.filling-select').setAttribute('name', `filling${i}`);
-        formClone.querySelector('.color-select').setAttribute('name', `color${i}`);
-        formClone.querySelector('.design-select').setAttribute('name', `design${i}`);
-
-        formsContainer.appendChild(formClone);
-    }
-
-    document.getElementById('orderButtons').style.display = 'block';
+    // Очищаем форму для следующего торта
+    cakeCount++;
 }
 
-function saveFormData() {
-    const cakeCount = document.getElementById('cakeCount').value;
-    const formData = { cakeCount, cakes: [] };
-
-    for (let i = 1; i <= cakeCount; i++) {
-        const filling = document.querySelector(`select[name="filling${i}"]`).value;
-        const color = document.querySelector(`select[name="color${i}"]`).value;
-        const design = document.querySelector(`select[name="design${i}"]`).value;
-        formData.cakes.push({ filling, color, design });
-    }
-
-    localStorage.setItem('cakeOrder', JSON.stringify(formData));
-    alert('Данные сохранены!');
-}
-
-function loadFormData() {
-    const savedData = JSON.parse(localStorage.getItem('cakeOrder'));
-    if (!savedData) {
-        alert('Нет сохранённых данных');
-        return;
-    }
-
-    document.getElementById('cakeCount').value = savedData.cakeCount;
-    generateForms();
-
-    savedData.cakes.forEach((cake, index) => {
-        document.querySelector(`select[name="filling${index + 1}"]`).value = cake.filling;
-        document.querySelector(`select[name="color${index + 1}"]`).value = cake.color;
-        document.querySelector(`select[name="design${index + 1}"]`).value = cake.design;
-    });
-
-    alert('Данные загружены!');
-}
-
+// Функция для добавления новой строки в таблицу
 function generateTable() {
-    const cakeCount = document.getElementById('cakeCount').value;
-    const resultContainer = document.getElementById('resultContainer');
+    const resultContainer = document.getElementById('resultContainer').getElementsByTagName('tbody')[0];
+    resultContainer.innerHTML = '';  // Очищаем предыдущие строки
 
-    resultContainer.innerHTML = '';
+    const orderData = JSON.parse(localStorage.getItem('cakeOrder')) || [];
 
-    document.getElementById('orderHeader').style.display = 'block';
+    if (orderData.length > 0) {
+        // Показываем заголовок заказа
+        document.getElementById('orderHeader').style.display = 'block';
 
-    const tableTemplate = document.getElementById('tableTemplate').content.cloneNode(true);
-    const table = tableTemplate.querySelector('.grid-table');
+        // Для каждого торта генерируем строку в таблице
+        orderData.forEach((cake, index) => {
+            const rowTemplate = document.getElementById('cakeRowTemplate');
+            const row = rowTemplate.content.cloneNode(true);  // Клонируем шаблон строки
 
-    const rowTemplate = document.getElementById('rowTemplate');
+            // Заполняем ячейки строки
+            row.querySelector('.cake-number').textContent = index + 1;
+            row.querySelector('.cake-filling').textContent = cake.filling;
+            row.querySelector('.cake-color').textContent = cake.color;
+            row.querySelector('.cake-design').textContent = cake.design;
 
-    for (let i = 1; i <= cakeCount; i++) {
-        const filling = document.querySelector(`select[name="filling${i}"]`).value;
-        const color = document.querySelector(`select[name="color${i}"]`).value;
-        const design = document.querySelector(`select[name="design${i}"]`).value;
-
-        const rowClone = rowTemplate.content.cloneNode(true);
-        rowClone.querySelector('.cake-number').textContent = i;
-        rowClone.querySelector('.cake-filling').textContent = filling;
-        rowClone.querySelector('.cake-color').textContent = color;
-        rowClone.querySelector('.cake-design').textContent = design;
-
-        table.appendChild(rowClone);
+            resultContainer.appendChild(row);  // Добавляем строку в таблицу
+        });
     }
-
-    resultContainer.appendChild(table);
 }
