@@ -29,8 +29,6 @@ function addCake() {
 }
 
 function generateTable() {
-    localStorage.clear();
-
     const resultContainer = document.getElementById('resultContainer').getElementsByTagName('tbody')[0];
     resultContainer.innerHTML = '';
 
