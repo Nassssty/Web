@@ -420,3 +420,37 @@ footer li {
     transform: scale(0.95);
 }
 
+#preloader {
+    display: block;
+    text-align: center;
+    margin: 50px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+#userData {
+    margin-top: 20px;
+}
+
+#userData p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#dots {
+    font-size: 24px;
+    animation: blink 1.5s steps(3, end) infinite;
+}
+
+@keyframes blink {
+    0% { content: "."; }
+    50% { content: ".."; }
+    100% { content: "..."; }
+}
+
+#error {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
