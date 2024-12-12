@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: true,
         slidesPerView: 3,
         spaceBetween: 20,
+        centeredSlides: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,

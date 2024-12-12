@@ -520,3 +520,16 @@ footer li {
 #gallery .swiper-button-prev {
     left: 5px;
 }
+
+
+@media (max-width: 1200px) {
+    #gallery {
+        width: calc(200% / 3 - 15px);
+    }
+}
+
+@media (max-width: 900px) {
+    #gallery {
+        width: calc(150% / 3 - 10px);
+    }
+}
